@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+<th:block layout:fragment="css"></th:block>
+<th:block layout:fragment="script"></th:block>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/resources/static/js/test.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/test.css">
+
+<div layout:fragment="content">
+    <div id="select-subject">
+        <form th:action="@{/test-ndp/loading}" method="post">
+            <select name="subject">
+                <option th:each="subjectOpt : ${T(com.ndptest.tool.Subject).values()}" th:value="${subjectOpt}"
+                        th:text="${subjectOpt.displayString}">
+                </option>
+            </select>
+            <div id="test-start-button">
+                <input type="submit" value="테스트 시작">
+            </div>
+        </form>
+    </div>
+</div>
+</html>
